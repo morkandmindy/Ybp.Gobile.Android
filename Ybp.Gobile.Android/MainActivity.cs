@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Ybp.Gobile.Android.Models;
 
 namespace Ybp.Gobile.Android
 {
@@ -22,9 +23,31 @@ namespace Ybp.Gobile.Android
 
             // Get our button from the layout resource,
             // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+            Button loginButton = FindViewById<Button>(Resource.Id.loginButton);
+            EditText loginIdText = FindViewById<EditText>(Resource.Id.loginidtext);
+            EditText passwordText = FindViewById<EditText>(Resource.Id.passwordtext);
+            EditText accountText = FindViewById<EditText>(Resource.Id.accountText);
+            EditText responseText = FindViewById<EditText>(Resource.Id.responseText);
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+
+
+            loginButton.Click += async (sender, e) =>
+            {
+                
+                    LoginCredentials loginCredentials = new LoginCredentials()
+                    {
+                        Account = accountText.Text,
+                        Login = loginIdText.Text,
+                        Password = passwordText.Text
+                    };
+
+                    var serializedCredentials = Newtonsoft.Json.JsonConvert.SerializeObject(loginCredentials);
+
+
+                    var utils = new Utilities();
+                    String response = await utils.MakeAjaxRequestAsync(Constants.LOGIN_URL, serializedCredentials);
+                    responseText.Text = response;
+            };
         }
     }
 }
