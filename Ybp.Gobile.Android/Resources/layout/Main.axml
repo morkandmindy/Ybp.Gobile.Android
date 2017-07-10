@@ -48,4 +48,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/responseText" />
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginProgress"
+        android:indeterminateBehavior="repeat"
+        android:indeterminateOnly="true"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:visibility="invisible" />
 </LinearLayout>

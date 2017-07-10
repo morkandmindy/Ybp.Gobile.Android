@@ -21,6 +21,8 @@ namespace Ybp.Gobile.Android
         {
             base.OnCreate(savedInstanceState);
 
+            MobileBarcodeScanner.Initialize(Application);
+
             SetContentView(Resource.Layout.Search);
 
             scanner = new MobileBarcodeScanner();
@@ -28,15 +30,10 @@ namespace Ybp.Gobile.Android
             buttonScan = this.FindViewById<Button>(Resource.Id.scanButton);
             buttonScan.Click += async delegate
                                       {
-                                          //Tell our scanner to use the default overlay
                                           scanner.UseCustomOverlay = false;
-
-                                          //We can customize the top and bottom text of the default overlay
                                           scanner.TopText = "Hold the camera up to the barcode\nAbout 6 inches away";
                                           scanner.BottomText = "Wait for the barcode to automatically scan!";
 
-
-                                          // Start thread to adjust focus at 1-sec intervals
                                           Result result = null;
                                           new Thread(new ThreadStart(delegate
                                                                      {
@@ -47,7 +44,6 @@ namespace Ybp.Gobile.Android
                                                                          }
                                                                      })).Start();
 
-                                          //Start scanning
                                           result = await scanner.Scan();
 
                                           HandleScanResult(result);

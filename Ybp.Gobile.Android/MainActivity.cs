@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 
 using Newtonsoft.Json;
@@ -29,10 +30,14 @@ namespace Ybp.Gobile.Android
             EditText passwordText = FindViewById<EditText>(Resource.Id.passwordtext);
             EditText accountText = FindViewById<EditText>(Resource.Id.accountText);
             TextView responseText = FindViewById<TextView>(Resource.Id.responseText);
+            ProgressBar loginProgressBar = FindViewById<ProgressBar>(Resource.Id.loginProgress);
 
+            loginProgressBar.Visibility = ViewStates.Invisible;
 
             loginButton.Click += async (sender, e) =>
                                        {
+                                           loginProgressBar.Visibility = ViewStates.Visible;
+
                                            LoginCredentials loginCredentials = new LoginCredentials()
                                                                                {
                                                                                    Account = accountText.Text,
@@ -46,9 +51,11 @@ namespace Ybp.Gobile.Android
                                            var utils = new Utilities();
                                            var response =
                                                await utils.MakeAjaxRequestAsync(Constants.LOGIN_URL, serializedCredentials);
-                                           
+
+                                           loginProgressBar.Visibility = ViewStates.Invisible;
+
                                            JObject jsonResponse = JObject.Parse(response);
-                                           if((string)jsonResponse["Login"]=="OK")
+                                           if ((string)jsonResponse["Login"] == "OK")
                                            {
                                                var intent = new Intent(this, typeof(SearchActivity));
                                                StartActivity(intent);
