@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="30px">
     <TextView
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
@@ -12,7 +13,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/loginidtext" />
+        android:id="@+id/loginidtext"
+        android:text="gspence" />
     <TextView
         android:text="@string/password"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -23,7 +25,8 @@
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/passwordtext" />
+        android:id="@+id/passwordtext"
+        android:text="pppppp" />
     <TextView
         android:text="@string/account"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -33,15 +36,16 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/accountText" />
+        android:id="@+id/accountText"
+        android:text="8466" />
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login" />
-    <EditText
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/responseText"
-        android:visibility="visible" />
+        android:id="@+id/responseText" />
 </LinearLayout>

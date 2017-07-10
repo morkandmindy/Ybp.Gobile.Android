@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+  <style name="GobiCustomTheme" parent="android:Theme.Material.Light">
+    <item name="android:colorPrimary">@color/gobi_blue</item>
+    <item name="android:colorAccent">@color/gobi_orange</item>
+  </style>
+</resources>

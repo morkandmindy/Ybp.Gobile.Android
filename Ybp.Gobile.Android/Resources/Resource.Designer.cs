@@ -26,6 +26,9 @@ namespace Ybp.Gobile.Android
 		
 		public static void UpdateIdValues()
 		{
+			global::ZXing.Mobile.Resource.Id.contentFrame = global::Ybp.Gobile.Android.Resource.Id.contentFrame;
+			global::ZXing.Mobile.Resource.Layout.zxingscanneractivitylayout = global::Ybp.Gobile.Android.Resource.Layout.zxingscanneractivitylayout;
+			global::ZXing.Mobile.Resource.Layout.zxingscannerfragmentlayout = global::Ybp.Gobile.Android.Resource.Layout.zxingscannerfragmentlayout;
 		}
 		
 		public partial class Attribute
@@ -37,6 +40,25 @@ namespace Ybp.Gobile.Android
 			}
 			
 			private Attribute()
+			{
+			}
+		}
+		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int gobi_blue = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int gobi_orange = 2130968577;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
 			{
 			}
 		}
@@ -60,41 +82,38 @@ namespace Ybp.Gobile.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050004
-			public const int accountLabel = 2131034116;
+			// aapt resource value: 0x7f070004
+			public const int accountLabel = 2131165188;
 			
-			// aapt resource value: 0x7f050005
-			public const int accountText = 2131034117;
+			// aapt resource value: 0x7f070005
+			public const int accountText = 2131165189;
 			
-			// aapt resource value: 0x7f050008
-			public const int button1 = 2131034120;
+			// aapt resource value: 0x7f070009
+			public const int button2 = 2131165193;
 			
-			// aapt resource value: 0x7f05000b
-			public const int button2 = 2131034123;
+			// aapt resource value: 0x7f07000a
+			public const int contentFrame = 2131165194;
 			
-			// aapt resource value: 0x7f05000a
-			public const int editText1 = 2131034122;
+			// aapt resource value: 0x7f070006
+			public const int loginButton = 2131165190;
 			
-			// aapt resource value: 0x7f050006
-			public const int loginButton = 2131034118;
+			// aapt resource value: 0x7f070000
+			public const int loginIdLabel = 2131165184;
 			
-			// aapt resource value: 0x7f050000
-			public const int loginIdLabel = 2131034112;
+			// aapt resource value: 0x7f070001
+			public const int loginidtext = 2131165185;
 			
-			// aapt resource value: 0x7f050001
-			public const int loginidtext = 2131034113;
+			// aapt resource value: 0x7f070002
+			public const int passwordLabel = 2131165186;
 			
-			// aapt resource value: 0x7f050002
-			public const int passwordLabel = 2131034114;
+			// aapt resource value: 0x7f070003
+			public const int passwordtext = 2131165187;
 			
-			// aapt resource value: 0x7f050003
-			public const int passwordtext = 2131034115;
+			// aapt resource value: 0x7f070007
+			public const int responseText = 2131165191;
 			
-			// aapt resource value: 0x7f050007
-			public const int responseText = 2131034119;
-			
-			// aapt resource value: 0x7f050009
-			public const int textView1 = 2131034121;
+			// aapt resource value: 0x7f070008
+			public const int scanButton = 2131165192;
 			
 			static Id()
 			{
@@ -115,6 +134,12 @@ namespace Ybp.Gobile.Android
 			// aapt resource value: 0x7f030001
 			public const int Search = 2130903041;
 			
+			// aapt resource value: 0x7f030002
+			public const int zxingscanneractivitylayout = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int zxingscannerfragmentlayout = 2130903043;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -128,23 +153,23 @@ namespace Ybp.Gobile.Android
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040005
-			public const int ApplicationName = 2130968581;
+			// aapt resource value: 0x7f050005
+			public const int ApplicationName = 2131034117;
 			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int Hello = 2131034112;
 			
-			// aapt resource value: 0x7f040004
-			public const int account = 2130968580;
+			// aapt resource value: 0x7f050004
+			public const int account = 2131034116;
 			
-			// aapt resource value: 0x7f040001
-			public const int login = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int login = 2131034113;
 			
-			// aapt resource value: 0x7f040002
-			public const int loginid = 2130968578;
+			// aapt resource value: 0x7f050002
+			public const int loginid = 2131034114;
 			
-			// aapt resource value: 0x7f040003
-			public const int password = 2130968579;
+			// aapt resource value: 0x7f050003
+			public const int password = 2131034115;
 			
 			static String()
 			{
@@ -152,6 +177,22 @@ namespace Ybp.Gobile.Android
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int GobiCustomTheme = 2131099648;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}

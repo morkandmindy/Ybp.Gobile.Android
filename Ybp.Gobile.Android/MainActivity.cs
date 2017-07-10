@@ -1,15 +1,16 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Android.Widget;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 using Ybp.Gobile.Android.Models;
 
 namespace Ybp.Gobile.Android
 {
-    [Activity(Label = "Ybp.Gobile.Android", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Gobile - Login", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         int count = 1;
@@ -27,28 +28,36 @@ namespace Ybp.Gobile.Android
             EditText loginIdText = FindViewById<EditText>(Resource.Id.loginidtext);
             EditText passwordText = FindViewById<EditText>(Resource.Id.passwordtext);
             EditText accountText = FindViewById<EditText>(Resource.Id.accountText);
-            EditText responseText = FindViewById<EditText>(Resource.Id.responseText);
-
+            TextView responseText = FindViewById<TextView>(Resource.Id.responseText);
 
 
             loginButton.Click += async (sender, e) =>
-            {
-                
-                    LoginCredentials loginCredentials = new LoginCredentials()
-                    {
-                        Account = accountText.Text,
-                        Login = loginIdText.Text,
-                        Password = passwordText.Text
-                    };
+                                       {
+                                           LoginCredentials loginCredentials = new LoginCredentials()
+                                                                               {
+                                                                                   Account = accountText.Text,
+                                                                                   Login = loginIdText.Text,
+                                                                                   Password = passwordText.Text
+                                                                               };
 
-                    var serializedCredentials = Newtonsoft.Json.JsonConvert.SerializeObject(loginCredentials);
+                                           var serializedCredentials = JsonConvert.SerializeObject(loginCredentials);
 
 
-                    var utils = new Utilities();
-                    var response = await utils.MakeAjaxRequestAsync(Constants.LOGIN_URL, serializedCredentials);
-                    responseText.Text = response;
-            };
+                                           var utils = new Utilities();
+                                           var response =
+                                               await utils.MakeAjaxRequestAsync(Constants.LOGIN_URL, serializedCredentials);
+                                           
+                                           JObject jsonResponse = JObject.Parse(response);
+                                           if((string)jsonResponse["Login"]=="OK")
+                                           {
+                                               var intent = new Intent(this, typeof(SearchActivity));
+                                               StartActivity(intent);
+                                           }
+                                           else
+                                           {
+                                               responseText.Text = response;
+                                           }
+                                       };
         }
     }
 }
-

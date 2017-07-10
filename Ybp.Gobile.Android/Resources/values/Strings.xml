@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
   <string name="Hello">Hello World, Click Me!</string>
-  <string name="login">login</string>
-  <string name="loginid">login id</string>
-  <string name="password">password</string>
-  <string name="account">account</string>
+  <string name="login">Login</string>
+  <string name="loginid">Login ID</string>
+  <string name="password">Password</string>
+  <string name="account">Account</string>
   <string name="ApplicationName">Gobile Scan to Gobi</string>
 </resources>

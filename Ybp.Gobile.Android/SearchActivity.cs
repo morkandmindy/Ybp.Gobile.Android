@@ -1,25 +1,69 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Threading;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
+
+using ZXing.Mobile;
+
+using Result = ZXing.Result;
 
 namespace Ybp.Gobile.Android
 {
-    [Activity(Label = "SearchActivity")]
+    [Activity(Label = "Gobile - Scan ISBN")]
     public class SearchActivity : Activity
     {
+        private Button buttonScan;
+
+        private MobileBarcodeScanner scanner;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
+            SetContentView(Resource.Layout.Search);
+
+            scanner = new MobileBarcodeScanner();
+
+            buttonScan = this.FindViewById<Button>(Resource.Id.scanButton);
+            buttonScan.Click += async delegate
+                                      {
+                                          //Tell our scanner to use the default overlay
+                                          scanner.UseCustomOverlay = false;
+
+                                          //We can customize the top and bottom text of the default overlay
+                                          scanner.TopText = "Hold the camera up to the barcode\nAbout 6 inches away";
+                                          scanner.BottomText = "Wait for the barcode to automatically scan!";
+
+
+                                          // Start thread to adjust focus at 1-sec intervals
+                                          Result result = null;
+                                          new Thread(new ThreadStart(delegate
+                                                                     {
+                                                                         while (result == null)
+                                                                         {
+                                                                             scanner.AutoFocus();
+                                                                             Thread.Sleep(1000);
+                                                                         }
+                                                                     })).Start();
+
+                                          //Start scanning
+                                          result = await scanner.Scan();
+
+                                          HandleScanResult(result);
+                                      };
+        }
+
+        void HandleScanResult(Result result)
+        {
+            string msg = "";
+
+            if (result != null && !string.IsNullOrEmpty(result.Text))
+                msg = "Found Barcode: " + result.Text;
+            else
+                msg = "Scanning Canceled!";
+
+            this.RunOnUiThread(() => Toast.MakeText(this, msg, ToastLength.Short).Show());
         }
     }
 }
