@@ -22,13 +22,12 @@ namespace Ybp.Gobile.Android
         {
             // Create an HTTP web request using the URL:
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(new Uri(url));
-            request.ContentType = "application/json";
+            request.ContentType = "application/json; charset=utf-8";
             request.Method = "POST";
-            byte[] postBytes = Encoding.UTF8.GetBytes(requestBody);
 
             // this is important - make sure you specify type this way
             request.ContentType = "application/json; charset=UTF-8";
-            //request.Accept = "application/json";
+            request.Accept = "application/json";
             //request.ContentLength = postBytes.Length;
             //request.CookieContainer = Cookies;
             //request.UserAgent = currentUserAgent;
@@ -37,7 +36,8 @@ namespace Ybp.Gobile.Android
             {
                 using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
-                    streamWriter.Write(postBytes);
+                    streamWriter.Write(requestBody);
+                    streamWriter.Flush();
                 }
             }
             catch (Exception e)

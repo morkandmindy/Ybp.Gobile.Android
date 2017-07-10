@@ -26,9 +26,6 @@ namespace Ybp.Gobile.Android
 		
 		public static void UpdateIdValues()
 		{
-			global::ZXing.Mobile.Resource.Id.contentFrame = global::Ybp.Gobile.Android.Resource.Id.contentFrame;
-			global::ZXing.Mobile.Resource.Layout.zxingscanneractivitylayout = global::Ybp.Gobile.Android.Resource.Layout.zxingscanneractivitylayout;
-			global::ZXing.Mobile.Resource.Layout.zxingscannerfragmentlayout = global::Ybp.Gobile.Android.Resource.Layout.zxingscannerfragmentlayout;
 		}
 		
 		public partial class Attribute
@@ -75,9 +72,6 @@ namespace Ybp.Gobile.Android
 			// aapt resource value: 0x7f05000b
 			public const int button2 = 2131034123;
 			
-			// aapt resource value: 0x7f05000c
-			public const int contentFrame = 2131034124;
-			
 			// aapt resource value: 0x7f05000a
 			public const int editText1 = 2131034122;
 			
@@ -120,12 +114,6 @@ namespace Ybp.Gobile.Android
 			
 			// aapt resource value: 0x7f030001
 			public const int Search = 2130903041;
-			
-			// aapt resource value: 0x7f030002
-			public const int zxingscanneractivitylayout = 2130903042;
-			
-			// aapt resource value: 0x7f030003
-			public const int zxingscannerfragmentlayout = 2130903043;
 			
 			static Layout()
 			{
