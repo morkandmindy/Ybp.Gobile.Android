@@ -45,7 +45,7 @@ namespace Ybp.Gobile.Android
 
 
                     var utils = new Utilities();
-                    String response = await utils.MakeAjaxRequestAsync(Constants.LOGIN_URL, serializedCredentials);
+                    var response = await utils.MakeAjaxRequestAsync(Constants.LOGIN_URL, serializedCredentials);
                     responseText.Text = response;
             };
         }
