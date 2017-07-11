@@ -24,14 +24,14 @@
             android:paddingLeft="30px">
             <TextView
                 android:text="Title"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewTitle"
                 android:textColor="@color/gobi_blue" />
             <TextView
                 android:text="Author"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewAuthor" />

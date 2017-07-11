@@ -65,7 +65,7 @@ namespace Ybp.Gobile.Android.Resources.layout
                             {
                                 ContainedItems =
                                     searchResult.ItemVendors[0]
-                                    .PK_ITEM_VENDOR,
+                                    .PK_ITEM,
                                 ContainerId =
                                     searchResult.Container
                             };
