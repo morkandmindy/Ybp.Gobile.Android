@@ -19,8 +19,13 @@ namespace Ybp.Gobile.Android.Resources.layout
     [Activity(Label = "Gobile")]
     public class BibDisplayActivity : Activity
     {
-        private TextView textViewIsbn;
+        private TextView textViewAuthor;
         private TextView textViewTitle;
+        private ImageView imageViewBookCover;
+        private TextView textViewPublisher;
+        private TextView textViewPubYear;
+        private TextView textViewBinding;
+        private TextView textViewPagination;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -28,13 +33,27 @@ namespace Ybp.Gobile.Android.Resources.layout
 
             SetContentView(Resource.Layout.BibDisplay);
 
-            textViewIsbn = FindViewById<TextView>(Resource.Id.textViewIsbn);
+            textViewAuthor = FindViewById<TextView>(Resource.Id.textViewAuthor);
             textViewTitle = FindViewById<TextView>(Resource.Id.textViewTitle);
+            textViewPublisher = FindViewById<TextView>(Resource.Id.textViewPublisher);
+            textViewPubYear = FindViewById<TextView>(Resource.Id.textViewPubYear);
+            textViewBinding = FindViewById<TextView>(Resource.Id.textViewBinding);
+            textViewPagination = FindViewById<TextView>(Resource.Id.textViewPagination);
+
+            imageViewBookCover = FindViewById<ImageView>(Resource.Id.imageViewBookCover);
 
             SearchResult searchResult = JsonConvert.DeserializeObject<SearchResult>(Intent.GetStringExtra("response"));
 
-            textViewTitle.Text = searchResult.BibData.BOOK_JACKET;// searchResult.BibData.TITLE;
-            textViewIsbn.Text = searchResult.BibData.ISBN_13;
+            textViewTitle.Text = searchResult.BibData.TITLE;
+            textViewAuthor.Text = searchResult.BibData.AUTHOR_NAME;
+            textViewPublisher.Text = "Publisher: " + searchResult.BibData.PUBLISHER_NAME;
+            textViewPubYear.Text = "Pub Year: " + searchResult.BibData.PUBLICATION_YEAR;
+            textViewBinding.Text = "Binding: " + searchResult.BibData.BINDING_TEXT;
+            textViewPagination.Text = "Pagination: " + searchResult.BibData.PAGINATION;
+
+            var bookCover = Utilities.GetImageBitmapFromUrl(Constants.BOOK_COVER_VIEW_URL + searchResult.BibData.ISBN_13);
+            imageViewBookCover.SetImageBitmap(bookCover);
+
         }
     }
 }
