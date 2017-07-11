@@ -18,5 +18,10 @@ namespace Ybp.Gobile.Android.Models
         public string ContainerId { get; set; }
         // ContainedItems is a CSV consisting of the ItemVendor primary key prefixed with a 'p'
         public string ContainedItems { get; set; }
+
+        public string ToRequest()
+        {
+            return $"containeditems=p{ContainedItems}&containertype={ContainerType}&container={ContainerId}";
+        }
     }
 }
