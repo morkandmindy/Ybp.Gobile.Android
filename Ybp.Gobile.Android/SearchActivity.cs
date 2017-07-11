@@ -2,12 +2,14 @@
 using System.Threading;
 
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Widget;
 
 using Newtonsoft.Json;
 
 using Ybp.Gobile.Android.Models;
+using Ybp.Gobile.Android.Resources.layout;
 
 using ZXing.Mobile;
 
@@ -63,8 +65,10 @@ namespace Ybp.Gobile.Android
                     var isbnRequest = JsonConvert.SerializeObject(isbn);
                     var utils = new Utilities();
                     var response = await utils.MakeAjaxRequestAsync(Constants.SEARCH_URL, isbnRequest);
-                    SearchResult searchResult = JsonConvert.DeserializeObject<SearchResult>(response);
-                    //todo pass searchResult along to next page
+                    
+                    var intent = new Intent(this, typeof(BibDisplayActivity));
+                    intent.PutExtra("response", response);
+                    StartActivity(intent);
                 }
                 catch (Exception ex)
                 {
