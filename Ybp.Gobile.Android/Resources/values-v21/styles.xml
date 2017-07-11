@@ -3,5 +3,6 @@
   <style name="GobiCustomTheme" parent="android:Theme.Material.Light">
     <item name="android:colorPrimary">@color/gobi_blue</item>
     <item name="android:colorAccent">@color/gobi_orange</item>
+    <item name="android:windowBackground">@color/gobi_mist</item>
   </style>
 </resources>

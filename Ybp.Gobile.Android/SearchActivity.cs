@@ -14,6 +14,7 @@ namespace Ybp.Gobile.Android
     public class SearchActivity : Activity
     {
         private Button buttonScan;
+        private EditText isbnEditText; 
 
         private MobileBarcodeScanner scanner;
 
@@ -26,14 +27,13 @@ namespace Ybp.Gobile.Android
             SetContentView(Resource.Layout.Search);
 
             scanner = new MobileBarcodeScanner();
-
+            scanner.UseCustomOverlay = false;
+            scanner.TopText = "Hold the camera up to the barcode\nAbout 6 inches away";
+            scanner.BottomText = "Wait for the barcode to automatically scan!";
+            isbnEditText = this.FindViewById<EditText>(Resource.Id.isbnEditText);
             buttonScan = this.FindViewById<Button>(Resource.Id.scanButton);
             buttonScan.Click += async delegate
                                       {
-                                          scanner.UseCustomOverlay = false;
-                                          scanner.TopText = "Hold the camera up to the barcode\nAbout 6 inches away";
-                                          scanner.BottomText = "Wait for the barcode to automatically scan!";
-
                                           Result result = null;
                                           new Thread(new ThreadStart(delegate
                                                                      {
@@ -52,14 +52,19 @@ namespace Ybp.Gobile.Android
 
         void HandleScanResult(Result result)
         {
-            string msg = "";
-
             if (result != null && !string.IsNullOrEmpty(result.Text))
-                msg = "Found Barcode: " + result.Text;
-            else
-                msg = "Scanning Canceled!";
+            {
+                isbnEditText.Text = result.Text;
+            }
 
-            this.RunOnUiThread(() => Toast.MakeText(this, msg, ToastLength.Short).Show());
+            //string msg = "";
+
+            //if (result != null && !string.IsNullOrEmpty(result.Text))
+            //    msg = "Found Barcode: " + result.Text;
+            //else
+            //    msg = "Scanning Canceled!";
+
+            //this.RunOnUiThread(() => Toast.MakeText(this, msg, ToastLength.Short).Show());
         }
     }
 }

@@ -42,19 +42,20 @@
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login" />
+        android:text="@string/login"
+        android:background="@color/gobi_orange"
+        android:layout_marginTop="30px" />
     <TextView
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/responseText" />
-    <ProgressBar
+    <ProgressBar xmlns:tools="http://schemas.android.com/tools"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/loginProgress"
         android:indeterminateBehavior="repeat"
         android:indeterminateOnly="true"
-        xmlns:tools="http://schemas.android.com/tools"
         tools:visibility="invisible" />
 </LinearLayout>

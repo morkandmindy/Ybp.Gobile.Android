@@ -50,6 +50,9 @@ namespace Ybp.Gobile.Android
 			// aapt resource value: 0x7f040000
 			public const int gobi_blue = 2130968576;
 			
+			// aapt resource value: 0x7f040002
+			public const int gobi_mist = 2130968578;
+			
 			// aapt resource value: 0x7f040001
 			public const int gobi_orange = 2130968577;
 			
@@ -88,11 +91,11 @@ namespace Ybp.Gobile.Android
 			// aapt resource value: 0x7f070005
 			public const int accountText = 2131165189;
 			
-			// aapt resource value: 0x7f07000a
-			public const int button2 = 2131165194;
+			// aapt resource value: 0x7f07000c
+			public const int contentFrame = 2131165196;
 			
-			// aapt resource value: 0x7f07000b
-			public const int contentFrame = 2131165195;
+			// aapt resource value: 0x7f07000a
+			public const int isbnEditText = 2131165194;
 			
 			// aapt resource value: 0x7f070006
 			public const int loginButton = 2131165190;
@@ -117,6 +120,9 @@ namespace Ybp.Gobile.Android
 			
 			// aapt resource value: 0x7f070009
 			public const int scanButton = 2131165193;
+			
+			// aapt resource value: 0x7f07000b
+			public const int searchButton = 2131165195;
 			
 			static Id()
 			{

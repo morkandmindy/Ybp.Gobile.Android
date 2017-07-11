@@ -2,4 +2,5 @@
 <resources>
   <color name="gobi_blue">#44a8ff</color>
   <color name="gobi_orange">#ffac14</color>
+  <color name="gobi_mist">#eaecef</color>
 </resources>

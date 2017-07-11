@@ -2,16 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingTop="60px"
+    android:paddingBottom="30px"
+    android:paddingLeft="30px"
+    android:paddingRight="30px">
     <Button
         android:text="Scan Barcode"
         android:layout_width="match_parent"
-        android:layout_height="400px"
-        android:id="@+id/scanButton" />
-    <Button
-        android:text="Search Gobi"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:layout_margin="30px" />
+        android:id="@+id/scanButton"
+        android:height="300px"
+        android:background="@color/gobi_orange" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="60px">
+      <EditText
+        android:id="@+id/isbnEditText"
+            android:layout_width="240.0dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="GOBI Lookup"
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0.0dp" />
+    </LinearLayout>
 </LinearLayout>
