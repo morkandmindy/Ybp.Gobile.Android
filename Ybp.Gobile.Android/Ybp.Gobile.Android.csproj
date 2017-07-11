@@ -104,6 +104,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BibDisplayActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Models\BibData.cs" />
     <Compile Include="Models\IsbnSearchRequest.cs" />
@@ -125,6 +126,7 @@
     <AndroidResource Include="Resources\layout\Search.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\BibDisplay.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">

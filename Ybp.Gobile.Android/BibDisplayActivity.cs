@@ -27,10 +27,13 @@ namespace Ybp.Gobile.Android.Resources.layout
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.BibDisplay);
+
             textViewIsbn = FindViewById<TextView>(Resource.Id.textViewIsbn);
             textViewTitle = FindViewById<TextView>(Resource.Id.textViewTitle);
+
             SearchResult searchResult = JsonConvert.DeserializeObject<SearchResult>(Intent.GetStringExtra("response"));
-            textViewTitle.Text = searchResult.BibData.TITLE;
+
+            textViewTitle.Text = searchResult.BibData.BOOK_JACKET;// searchResult.BibData.TITLE;
             textViewIsbn.Text = searchResult.BibData.ISBN_13;
         }
     }
