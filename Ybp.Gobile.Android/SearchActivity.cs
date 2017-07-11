@@ -2,14 +2,12 @@
 using System.Threading;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Widget;
 
 using Newtonsoft.Json;
 
 using Ybp.Gobile.Android.Models;
-using Ybp.Gobile.Android.Resources.layout;
 
 using ZXing.Mobile;
 
@@ -22,7 +20,7 @@ namespace Ybp.Gobile.Android
     {
         private Button buttonScan;
         private Button buttonSearch;
-        private EditText isbnEditText;
+        private EditText isbnEditText; 
 
         private MobileBarcodeScanner scanner;
 
@@ -40,41 +38,38 @@ namespace Ybp.Gobile.Android
             scanner.BottomText = "Wait for the barcode to automatically scan!";
             isbnEditText = this.FindViewById<EditText>(Resource.Id.isbnEditText);
             buttonScan = this.FindViewById<Button>(Resource.Id.scanButton);
-            buttonScan.Click += async delegate
-            {
-                Result result = null;
-                new Thread(new ThreadStart(delegate
-                {
-                    while (result == null)
-                    {
-                        scanner.AutoFocus();
-                        Thread.Sleep(1000);
-                    }
-                })).Start();
-
-                result = await scanner.Scan();
-
-                HandleScanResult(result);
-            };
             buttonSearch = this.FindViewById<Button>(Resource.Id.searchButton);
+            buttonScan.Click += async delegate
+                                      {
+                                          Result result = null;
+                                          new Thread(new ThreadStart(delegate
+                                                                     {
+                                                                         while (result == null)
+                                                                         {
+                                                                             scanner.AutoFocus();
+                                                                             Thread.Sleep(1000);
+                                                                         }
+                                                                     })).Start();
+
+                                          result = await scanner.Scan();
+
+                                          HandleScanResult(result);
+                                      };
             buttonSearch.Click += async (sender, e) =>
-            {
-                try
-                {
-                    var isbn = new IsbnSearchRequest() { Isbn = isbnEditText.Text };
-                    var isbnRequest = JsonConvert.SerializeObject(isbn);
-                    var utils = new Utilities();
-                    var response = await utils.MakeAjaxRequestAsync(Constants.SEARCH_URL, isbnRequest);
-                    
-                    var intent = new Intent(this, typeof(BibDisplayActivity));
-                    intent.PutExtra("response", response);
-                    StartActivity(intent);
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine(ex.Message);
-                }
-            };
+                                  {
+                                      try
+                                      {
+                                          var isbn = new IsbnSearchRequest() { Isbn = isbnEditText.Text };
+                                          var isbnRequest = JsonConvert.SerializeObject(isbn);
+                                          var utils = new Utilities();
+                                          var response = await utils.MakeAjaxRequestAsync(Constants.SEARCH_URL, isbnRequest, Constants.JSON_CONTENT);
+                                          SearchResult searchResult = JsonConvert.DeserializeObject<SearchResult>(response);
+                                      }
+                                      catch (Exception ex)
+                                      {
+                                          System.Diagnostics.Debug.WriteLine(ex.Message);
+                                      }
+                                  };
         }
 
         void HandleScanResult(Result result)
@@ -83,6 +78,15 @@ namespace Ybp.Gobile.Android
             {
                 isbnEditText.Text = result.Text;
             }
+
+            //string msg = "";
+
+            //if (result != null && !string.IsNullOrEmpty(result.Text))
+            //    msg = "Found Barcode: " + result.Text;
+            //else
+            //    msg = "Scanning Canceled!";
+
+            //this.RunOnUiThread(() => Toast.MakeText(this, msg, ToastLength.Short).Show());
         }
     }
 }

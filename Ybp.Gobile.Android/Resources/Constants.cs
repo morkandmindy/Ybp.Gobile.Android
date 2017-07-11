@@ -8,5 +8,7 @@ namespace Ybp.Gobile.Android
         public static string LOGIN_URL = BASE_URL + "login";
         public static string SEARCH_URL = BASE_URL + "isbn_search";
         public static CookieContainer CookieContainer = new CookieContainer();
+        public static string JSON_CONTENT = "application/json; charset=utf-8";
+        public static string FORM_DATA = "application/x-www-form-urlencoded";
     }
 }

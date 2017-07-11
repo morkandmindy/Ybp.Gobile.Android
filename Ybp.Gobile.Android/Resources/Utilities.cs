@@ -7,7 +7,7 @@ namespace Ybp.Gobile.Android
 {
     public class Utilities
     {
-        public async Task<String> MakeAjaxRequestAsync(string url, string requestBody)
+        public async Task<String> MakeAjaxRequestAsync(string url, string requestBody, string requestType)
         {
             string responseText = "";
             // Create an HTTP web request using the URL:
@@ -16,7 +16,7 @@ namespace Ybp.Gobile.Android
             request.Method = "POST";
             request.CookieContainer = Constants.CookieContainer;
             // this is important - make sure you specify type this way
-            request.ContentType = "application/json; charset=UTF-8";
+            request.ContentType = requestType;
             request.Accept = "application/json";
             try
             {
