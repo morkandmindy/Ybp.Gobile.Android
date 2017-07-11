@@ -4,6 +4,8 @@ using Android.App;
 using Android.OS;
 using Android.Widget;
 
+using Newtonsoft.Json;
+
 using ZXing.Mobile;
 
 using Result = ZXing.Result;
@@ -14,6 +16,7 @@ namespace Ybp.Gobile.Android
     public class SearchActivity : Activity
     {
         private Button buttonScan;
+        private Button buttonSearch;
         private EditText isbnEditText; 
 
         private MobileBarcodeScanner scanner;
@@ -48,6 +51,21 @@ namespace Ybp.Gobile.Android
 
                                           HandleScanResult(result);
                                       };
+            buttonSearch = this.FindViewById<Button>(Resource.Id.searchButton);
+            buttonSearch.Click += async (sender, e) =>
+            {
+                //try
+                //{
+                //    var isbn = new IsbnSearchRequest() { Isbn = IsbnText.Text };
+                //    var isbnRequest = JsonConvert.SerializeObject(isbn);
+                //    var utils = new Utilities();
+                //    var response = await utils.MakeAjaxRequestAsync(Constants.SEARCH_URL, isbnRequest);
+                //}
+                //catch (Exception ex)
+                //{
+                //    System.Diagnostics.Debug.WriteLine(ex.Message);
+                //}
+            };
         }
 
         void HandleScanResult(Result result)
