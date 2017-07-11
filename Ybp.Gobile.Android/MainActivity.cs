@@ -50,7 +50,7 @@ namespace Ybp.Gobile.Android
 
                                            var utils = new Utilities();
                                            var response =
-                                               await utils.MakeAjaxRequestAsync(Constants.LOGIN_URL, serializedCredentials, Constants.JSON_CONTENT);
+                                               await Utilities.MakeAjaxRequestAsync(Constants.LOGIN_URL, serializedCredentials, Constants.JSON_CONTENT);
 
                                            loginProgressBar.Visibility = ViewStates.Invisible;
 

@@ -64,7 +64,7 @@ namespace Ybp.Gobile.Android
                                           var isbn = new IsbnSearchRequest() { Isbn = isbnEditText.Text };
                                           var isbnRequest = JsonConvert.SerializeObject(isbn);
                                           var utils = new Utilities();
-                                          var response = await utils.MakeAjaxRequestAsync(Constants.SEARCH_URL, isbnRequest, Constants.JSON_CONTENT);
+                                          var response = await Utilities.MakeAjaxRequestAsync(Constants.SEARCH_URL, isbnRequest, Constants.JSON_CONTENT);
                                           var intent = new Intent(this, typeof(BibDisplayActivity));
                                           intent.PutExtra("response", response);
                                           StartActivity(intent);

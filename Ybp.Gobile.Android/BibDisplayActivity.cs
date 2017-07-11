@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 
 using Newtonsoft.Json;
@@ -19,13 +13,15 @@ namespace Ybp.Gobile.Android.Resources.layout
     [Activity(Label = "Gobile")]
     public class BibDisplayActivity : Activity
     {
-        private TextView textViewAuthor;
-        private TextView textViewTitle;
         private ImageView imageViewBookCover;
-        private TextView textViewPublisher;
-        private TextView textViewPubYear;
+        private ListView listViewPurchaseOptions;
+        private TextView textViewAuthor;
         private TextView textViewBinding;
         private TextView textViewPagination;
+        private TextView textViewPublisher;
+        private TextView textViewPubYear;
+        private TextView textViewTitle;
+        private Button Button1;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -39,6 +35,8 @@ namespace Ybp.Gobile.Android.Resources.layout
             textViewPubYear = FindViewById<TextView>(Resource.Id.textViewPubYear);
             textViewBinding = FindViewById<TextView>(Resource.Id.textViewBinding);
             textViewPagination = FindViewById<TextView>(Resource.Id.textViewPagination);
+            listViewPurchaseOptions = FindViewById<ListView>(Resource.Id.listViewPurchaseOptions);
+            Button1 = FindViewById<Button>(Resource.Id.button1);
 
             imageViewBookCover = FindViewById<ImageView>(Resource.Id.imageViewBookCover);
 
@@ -54,6 +52,31 @@ namespace Ybp.Gobile.Android.Resources.layout
             var bookCover = Utilities.GetImageBitmapFromUrl(Constants.BOOK_COVER_VIEW_URL + searchResult.BibData.ISBN_13);
             imageViewBookCover.SetImageBitmap(bookCover);
 
+            var x = searchResult.ItemVendors.Select(o => o.GOBI_DISPLAY_NAME + " " + o.PURCHASE_OPTION_DESC).ToArray();
+            ArrayAdapter<string> purchaseOptions = new ArrayAdapter<string>(this,
+                global::Android.Resource.Layout.SimpleListItem1,
+                x);
+            listViewPurchaseOptions.Adapter = purchaseOptions;
+
+
+            //lets just pretend the user clicked on first item
+
+            var putInCart = new PutInCartRequest()
+                            {
+                                ContainedItems =
+                                    searchResult.ItemVendors[0]
+                                    .PK_ITEM_VENDOR,
+                                ContainerId =
+                                    searchResult.Container
+                            };
+            Button1.Click += async (sender, e) =>
+                                   {
+                                       var response =
+                                           await Utilities.MakeAjaxRequestAsync(
+                                               Constants.BASE_URL + "app_putincart&cart=OrderCart",
+                                               putInCart.ToRequest(),
+                                               Constants.FORM_DATA);
+                                   };
         }
     }
 }

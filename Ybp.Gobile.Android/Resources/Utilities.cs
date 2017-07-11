@@ -9,7 +9,7 @@ namespace Ybp.Gobile.Android
 {
     public class Utilities
     {
-        public async Task<String> MakeAjaxRequestAsync(string url, string requestBody, string requestType)
+        public static async Task<String> MakeAjaxRequestAsync(string url, string requestBody, string requestType)
         {
             string responseText = "";
             // Create an HTTP web request using the URL:
