@@ -7,6 +7,7 @@ using Android.Widget;
 using Newtonsoft.Json;
 
 using Ybp.Gobile.Android.Models;
+using System;
 
 namespace Ybp.Gobile.Android.Resources.layout
 {
@@ -21,6 +22,7 @@ namespace Ybp.Gobile.Android.Resources.layout
         private TextView textViewPublisher;
         private TextView textViewPubYear;
         private TextView textViewTitle;
+        private TextView textViewAddToCartResult;
         private Button Button1;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -35,8 +37,9 @@ namespace Ybp.Gobile.Android.Resources.layout
             textViewPubYear = FindViewById<TextView>(Resource.Id.textViewPubYear);
             textViewBinding = FindViewById<TextView>(Resource.Id.textViewBinding);
             textViewPagination = FindViewById<TextView>(Resource.Id.textViewPagination);
-            listViewPurchaseOptions = FindViewById<ListView>(Resource.Id.listViewPurchaseOptions);
+            //listViewPurchaseOptions = FindViewById<ListView>(Resource.Id.listViewPurchaseOptions);
             Button1 = FindViewById<Button>(Resource.Id.button1);
+            textViewAddToCartResult = FindViewById<TextView>(Resource.Id.textViewAddToCartResult);
 
             imageViewBookCover = FindViewById<ImageView>(Resource.Id.imageViewBookCover);
 
@@ -52,11 +55,11 @@ namespace Ybp.Gobile.Android.Resources.layout
             var bookCover = Utilities.GetImageBitmapFromUrl(Constants.BOOK_COVER_VIEW_URL + searchResult.BibData.ISBN_13);
             imageViewBookCover.SetImageBitmap(bookCover);
 
-            var x = searchResult.ItemVendors.Select(o => o.GOBI_DISPLAY_NAME + " " + o.PURCHASE_OPTION_DESC).ToArray();
-            ArrayAdapter<string> purchaseOptions = new ArrayAdapter<string>(this,
-                global::Android.Resource.Layout.SimpleListItem1,
-                x);
-            listViewPurchaseOptions.Adapter = purchaseOptions;
+            //var x = searchResult.ItemVendors.Select(o => o.GOBI_DISPLAY_NAME + " " + o.PURCHASE_OPTION_DESC).ToArray();
+            //ArrayAdapter<string> purchaseOptions = new ArrayAdapter<string>(this,
+            //    global::Android.Resource.Layout.SimpleListItem1,
+            //    x);
+            //listViewPurchaseOptions.Adapter = purchaseOptions;
 
 
             //lets just pretend the user clicked on first item
@@ -76,6 +79,23 @@ namespace Ybp.Gobile.Android.Resources.layout
                                                Constants.BASE_URL + "app_putincart&cart=OrderCart",
                                                putInCart.ToRequest(),
                                                Constants.FORM_DATA);
+
+                                       try
+                                       {
+                                           CartResponseStatus cartResponseStatus = JsonConvert.DeserializeObject<CartResponseStatus>(response);
+                                           if (cartResponseStatus.Status.Equals("success"))
+                                           {
+                                               textViewAddToCartResult.Text = Constants.ADD_TO_CART_SUCCESS;
+                                           }
+                                           else
+                                           {
+                                               textViewAddToCartResult.Text = Constants.ADD_TO_CART_ERROR;
+                                           }
+                                       }
+                                       catch (Exception)
+                                       {
+                                           textViewAddToCartResult.Text = Constants.ADD_TO_CART_ERROR;
+                                       }
                                    };
         }
     }

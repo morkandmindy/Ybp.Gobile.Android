@@ -103,9 +103,6 @@ namespace Ybp.Gobile.Android
 			// aapt resource value: 0x7f070013
 			public const int isbnEditText = 2131165203;
 			
-			// aapt resource value: 0x7f070008
-			public const int listViewPurchaseOptions = 2131165192;
-			
 			// aapt resource value: 0x7f07000f
 			public const int loginButton = 2131165199;
 			
@@ -132,6 +129,9 @@ namespace Ybp.Gobile.Android
 			
 			// aapt resource value: 0x7f070014
 			public const int searchButton = 2131165204;
+			
+			// aapt resource value: 0x7f070008
+			public const int textViewAddToCartResult = 2131165192;
 			
 			// aapt resource value: 0x7f070002
 			public const int textViewAuthor = 2131165186;

@@ -7,70 +7,58 @@
     android:paddingRight="30px"
     android:minWidth="25px"
     android:minHeight="25px">
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="624px"
         android:layout_height="720px"
-        android:paddingTop="60px">
-        <ImageView
-            android:src="@android:drawable/ic_menu_gallery"
-            android:layout_width="624px"
-            android:layout_height="720px"
-            android:id="@+id/imageViewBookCover" />
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="720px"
-            android:paddingLeft="30px">
-            <TextView
-                android:text="Title"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewTitle"
-                android:textColor="@color/gobi_blue" />
-            <TextView
-                android:text="Author"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewAuthor" />
-        </LinearLayout>
-    </LinearLayout>
+        android:id="@+id/imageViewBookCover" />
+    <TextView
+        android:text="Title"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewTitle"
+        android:textColor="@color/gobi_blue" />
+    <TextView
+        android:text="Author"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewAuthor" />
     <TextView
         android:text="Publisher"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textViewPublisher"
         android:paddingTop="30px" />
     <TextView
         android:text="Pub Year"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textViewPubYear" />
     <TextView
         android:text="Binding"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textViewBinding" />
     <TextView
         android:text="Pagination"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textViewPagination" />
     <Button
-        android:text="Purchase"
+        android:text="Add To Cart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button1" />
-    <ListView
-        android:minWidth="25px"
-        android:minHeight="25px"
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listViewPurchaseOptions" />
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewAddToCartResult"
+        android:textStyle="bold" />
 </LinearLayout>

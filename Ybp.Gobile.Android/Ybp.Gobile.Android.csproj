@@ -107,6 +107,7 @@
     <Compile Include="BibDisplayActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Models\BibData.cs" />
+    <Compile Include="Models\CartResponseStatus.cs" />
     <Compile Include="Models\IsbnSearchRequest.cs" />
     <Compile Include="Models\ItemVendor.cs" />
     <Compile Include="Models\LoginCredentials.cs" />
