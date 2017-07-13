@@ -11,17 +11,18 @@ namespace Ybp.Gobile.Android
     {
         public static async Task<String> MakeAjaxRequestAsync(string url, string requestBody, string requestType)
         {
-            string responseText = "";
-            // Create an HTTP web request using the URL:
-            var request = (HttpWebRequest)HttpWebRequest.Create(new Uri(url));
-            request.ContentType = "application/json; charset=utf-8";
-            request.Method = "POST";
-            request.CookieContainer = Constants.CookieContainer;
-            // this is important - make sure you specify type this way
-            request.ContentType = requestType;
-            request.Accept = "application/json";
+            var responseText = "";
             try
             {
+                // Create an HTTP web request using the URL:
+                var request = (HttpWebRequest)HttpWebRequest.Create(new Uri(url));
+                request.ContentType = "application/json; charset=utf-8";
+                request.Method = "POST";
+                request.CookieContainer = Constants.CookieContainer;
+                // this is important - make sure you specify type this way
+                request.ContentType = requestType;
+                request.Accept = "application/json";
+
                 using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
                     streamWriter.Write(requestBody);
@@ -41,7 +42,7 @@ namespace Ybp.Gobile.Android
             catch (Exception e)
             {
                 // Just catching this for now so we can see the exception.
-                Console.WriteLine("Exception e {0}", e.ToString());
+                //Console.WriteLine("Exception e {0}", e.ToString());
                 //throw e;
             }
             return responseText;
@@ -53,7 +54,7 @@ namespace Ybp.Gobile.Android
 
             using (var webClient = new WebClient())
             {
-                var imageBytes = webClient.DownloadData(url);
+                byte[] imageBytes = webClient.DownloadData(url);
                 if (imageBytes != null && imageBytes.Length > 0)
                 {
                     imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
