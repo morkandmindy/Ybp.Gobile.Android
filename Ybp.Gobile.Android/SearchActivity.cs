@@ -17,7 +17,7 @@ using Result = ZXing.Result;
 
 namespace Ybp.Gobile.Android
 {
-    [Activity(Label = "Gobile - Scan ISBN")]
+    [Activity(Label = "Gobi2Go")]
     public class SearchActivity : Activity
     {
         private Button buttonScan;

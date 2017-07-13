@@ -11,7 +11,7 @@ using Ybp.Gobile.Android.Models;
 
 namespace Ybp.Gobile.Android
 {
-    [Activity(Label = "Gobile - Login", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Gobi2Go", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         int count = 1;

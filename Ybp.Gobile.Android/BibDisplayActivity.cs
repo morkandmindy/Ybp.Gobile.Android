@@ -11,7 +11,7 @@ using System;
 
 namespace Ybp.Gobile.Android.Resources.layout
 {
-    [Activity(Label = "Gobile")]
+    [Activity(Label = "Gobi2Go")]
     public class BibDisplayActivity : Activity
     {
         private ImageView imageViewBookCover;
