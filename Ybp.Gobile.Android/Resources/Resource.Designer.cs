@@ -85,56 +85,53 @@ namespace Ybp.Gobile.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f07000e
-			public const int accountLabel = 2131165198;
+			// aapt resource value: 0x7f07000d
+			public const int accountLabel = 2131165197;
 			
-			// aapt resource value: 0x7f07000f
-			public const int accountText = 2131165199;
+			// aapt resource value: 0x7f07000e
+			public const int accountText = 2131165198;
 			
 			// aapt resource value: 0x7f070007
 			public const int button1 = 2131165191;
 			
-			// aapt resource value: 0x7f070016
-			public const int contentFrame = 2131165206;
+			// aapt resource value: 0x7f070015
+			public const int contentFrame = 2131165205;
 			
 			// aapt resource value: 0x7f070000
 			public const int imageViewBookCover = 2131165184;
 			
-			// aapt resource value: 0x7f070014
-			public const int isbnEditText = 2131165204;
+			// aapt resource value: 0x7f070013
+			public const int isbnEditText = 2131165203;
 			
-			// aapt resource value: 0x7f070010
-			public const int loginButton = 2131165200;
-			
-			// aapt resource value: 0x7f07000a
-			public const int loginIdLabel = 2131165194;
-			
-			// aapt resource value: 0x7f070012
-			public const int loginProgress = 2131165202;
-			
-			// aapt resource value: 0x7f07000b
-			public const int loginidtext = 2131165195;
-			
-			// aapt resource value: 0x7f07000c
-			public const int passwordLabel = 2131165196;
-			
-			// aapt resource value: 0x7f07000d
-			public const int passwordtext = 2131165197;
+			// aapt resource value: 0x7f07000f
+			public const int loginButton = 2131165199;
 			
 			// aapt resource value: 0x7f070009
-			public const int progressBarAddCart = 2131165193;
+			public const int loginIdLabel = 2131165193;
 			
 			// aapt resource value: 0x7f070011
-			public const int responseText = 2131165201;
+			public const int loginProgress = 2131165201;
 			
-			// aapt resource value: 0x7f070013
-			public const int scanButton = 2131165203;
+			// aapt resource value: 0x7f07000a
+			public const int loginidtext = 2131165194;
 			
-			// aapt resource value: 0x7f070015
-			public const int searchButton = 2131165205;
+			// aapt resource value: 0x7f07000b
+			public const int passwordLabel = 2131165195;
+			
+			// aapt resource value: 0x7f07000c
+			public const int passwordtext = 2131165196;
 			
 			// aapt resource value: 0x7f070008
-			public const int textViewAddToCartResult = 2131165192;
+			public const int progressBarAddCart = 2131165192;
+			
+			// aapt resource value: 0x7f070010
+			public const int responseText = 2131165200;
+			
+			// aapt resource value: 0x7f070012
+			public const int scanButton = 2131165202;
+			
+			// aapt resource value: 0x7f070014
+			public const int searchButton = 2131165204;
 			
 			// aapt resource value: 0x7f070002
 			public const int textViewAuthor = 2131165186;
