@@ -10,9 +10,10 @@
     <ImageView
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="match_parent"
-        android:layout_height="1000px"
+        android:layout_height="1200px"
         android:id="@+id/imageViewBookCover"
-        android:scaleType="fitStart" />
+        android:scaleType="fitCenter"
+        android:paddingTop="30px" />
     <TextView
         android:text="Title"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -51,24 +52,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textViewPagination" />
-    <Button
-        android:text="Add To Cart"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button1" />
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewAddToCartResult"
-        android:textStyle="bold" />
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBarAddCart"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:indeterminateBehavior="repeat"
-        android:indeterminateOnly="true"
-        tools:visibility="invisible" />
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
+        <Button
+            android:text="Add To Cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center"
+            android:id="@+id/button1" />
+        <ProgressBar xmlns:tools="http://schemas.android.com/tools"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBarAddCart"
+            android:indeterminateBehavior="repeat"
+            android:indeterminateOnly="true"
+            android:layout_gravity="center_horizontal|center"
+            tools:visibility="invisible" />
+    </LinearLayout>
 </LinearLayout>

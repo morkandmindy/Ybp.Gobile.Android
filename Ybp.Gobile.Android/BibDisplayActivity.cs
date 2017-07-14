@@ -16,14 +16,12 @@ namespace Ybp.Gobile.Android.Resources.layout
     public class BibDisplayActivity : Activity
     {
         private ImageView imageViewBookCover;
-        private ListView listViewPurchaseOptions;
         private TextView textViewAuthor;
         private TextView textViewBinding;
         private TextView textViewPagination;
         private TextView textViewPublisher;
         private TextView textViewPubYear;
         private TextView textViewTitle;
-        private TextView textViewAddToCartResult;
         private Button Button1;
         private ProgressBar progressBar;
 
@@ -39,9 +37,7 @@ namespace Ybp.Gobile.Android.Resources.layout
             textViewPubYear = FindViewById<TextView>(Resource.Id.textViewPubYear);
             textViewBinding = FindViewById<TextView>(Resource.Id.textViewBinding);
             textViewPagination = FindViewById<TextView>(Resource.Id.textViewPagination);
-            //listViewPurchaseOptions = FindViewById<ListView>(Resource.Id.listViewPurchaseOptions);
             Button1 = FindViewById<Button>(Resource.Id.button1);
-            textViewAddToCartResult = FindViewById<TextView>(Resource.Id.textViewAddToCartResult);
             progressBar = FindViewById<ProgressBar>(Resource.Id.progressBarAddCart);
 
             imageViewBookCover = FindViewById<ImageView>(Resource.Id.imageViewBookCover);
@@ -59,13 +55,6 @@ namespace Ybp.Gobile.Android.Resources.layout
 
             var bookCover = Utilities.GetImageBitmapFromUrl(Constants.BOOK_COVER_VIEW_URL + searchResult.BibData.ISBN_13);
             imageViewBookCover.SetImageBitmap(bookCover);
-
-            //var x = searchResult.ItemVendors.Select(o => o.GOBI_DISPLAY_NAME + " " + o.PURCHASE_OPTION_DESC).ToArray();
-            //ArrayAdapter<string> purchaseOptions = new ArrayAdapter<string>(this,
-            //    global::Android.Resource.Layout.SimpleListItem1,
-            //    x);
-            //listViewPurchaseOptions.Adapter = purchaseOptions;
-
 
             //lets just pretend the user clicked on first item
 
@@ -87,25 +76,32 @@ namespace Ybp.Gobile.Android.Resources.layout
                                                putInCart.ToRequest(),
                                                Constants.FORM_DATA);
 
-                                       progressBar.Visibility = ViewStates.Gone;
+                                       progressBar.Visibility = ViewStates.Invisible;
 
+                                       
                                        try
                                        {
                                            CartResponseStatus cartResponseStatus = JsonConvert.DeserializeObject<CartResponseStatus>(response);
                                            if (cartResponseStatus.Status.Equals("success"))
                                            {
-                                               textViewAddToCartResult.Text = Constants.ADD_TO_CART_SUCCESS;
+                                               DisplayToast(Constants.ADD_TO_CART_SUCCESS);
                                            }
                                            else
                                            {
-                                               textViewAddToCartResult.Text = Constants.ADD_TO_CART_ERROR;
+                                               DisplayToast(Constants.ADD_TO_CART_ERROR);
                                            }
                                        }
                                        catch (Exception)
                                        {
-                                           textViewAddToCartResult.Text = Constants.ADD_TO_CART_ERROR;
+                                           DisplayToast(Constants.ADD_TO_CART_ERROR);
                                        }
                                    };
+        }
+
+        private void DisplayToast(string message)
+        {
+            Toast toast = Toast.MakeText(this, message, ToastLength.Long);
+            toast.Show();
         }
     }
 }
