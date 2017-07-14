@@ -55,7 +55,18 @@ namespace Ybp.Gobile.Android
 
                                           result = await scanner.Scan();
 
-                                          HandleScanResult(result);
+                                          if (result != null && !string.IsNullOrEmpty(result.Text))
+                                          {
+                                              isbnEditText.Text = result.Text;
+
+                                              var isbn = new IsbnSearchRequest() { Isbn = isbnEditText.Text };
+                                              var isbnRequest = JsonConvert.SerializeObject(isbn);
+                                              var utils = new Utilities();
+                                              var response = await Utilities.MakeAjaxRequestAsync(Constants.SEARCH_URL, isbnRequest, Constants.JSON_CONTENT);
+                                              var intent = new Intent(this, typeof(BibDisplayActivity));
+                                              intent.PutExtra("response", response);
+                                              StartActivity(intent);
+                                          }
                                       };
             buttonSearch.Click += async (sender, e) =>
                                   {
@@ -75,13 +86,6 @@ namespace Ybp.Gobile.Android
                                       }
                                   };
         }
-
-        void HandleScanResult(Result result)
-        {
-            if (result != null && !string.IsNullOrEmpty(result.Text))
-            {
-                isbnEditText.Text = result.Text;
-            }
-        }
+        
     }
 }

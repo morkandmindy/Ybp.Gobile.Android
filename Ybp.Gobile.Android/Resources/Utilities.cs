@@ -12,38 +12,44 @@ namespace Ybp.Gobile.Android
         public static async Task<String> MakeAjaxRequestAsync(string url, string requestBody, string requestType)
         {
             var responseText = "";
-            try
+            var success = false;
+            while (!success)//TODO: have it stop after n tries
             {
-                // Create an HTTP web request using the URL:
-                var request = (HttpWebRequest)HttpWebRequest.Create(new Uri(url));
-                request.ContentType = "application/json; charset=utf-8";
-                request.Method = "POST";
-                request.CookieContainer = Constants.CookieContainer;
-                // this is important - make sure you specify type this way
-                request.ContentType = requestType;
-                request.Accept = "application/json";
+                try
+                {
+                    // Create an HTTP web request using the URL:
+                    var request = (HttpWebRequest)HttpWebRequest.Create(new Uri(url));
+                    request.ContentType = "application/json; charset=utf-8";
+                    request.Method = "POST";
+                    request.CookieContainer = Constants.CookieContainer;
+                    // this is important - make sure you specify type this way
+                    request.ContentType = requestType;
+                    request.Accept = "application/json";
+                    request.Timeout = 2000;
 
-                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-                {
-                    streamWriter.Write(requestBody);
-                    streamWriter.Flush();
-                }
-                // Send the request to the server and wait for the response:
-                using (var response = (HttpWebResponse)(await request.GetResponseAsync()))
-                {
-                    // Get a stream representation of the HTTP web response:
-                    using (Stream stream = response.GetResponseStream())
+                    using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
                     {
-                        TextReader tr = new StreamReader(stream);
-                        responseText = tr.ReadToEnd();
+                        streamWriter.Write(requestBody);
+                        streamWriter.Flush();
+                    }
+                    // Send the request to the server and wait for the response:
+                    using (var response = (HttpWebResponse)(await request.GetResponseAsync()))
+                    {
+                        // Get a stream representation of the HTTP web response:
+                        using (Stream stream = response.GetResponseStream())
+                        {
+                            TextReader tr = new StreamReader(stream);
+                            responseText = tr.ReadToEnd();
+                        }
+                        success = true;
                     }
                 }
-            }
-            catch (Exception e)
-            {
-                // Just catching this for now so we can see the exception.
-                //Console.WriteLine("Exception e {0}", e.ToString());
-                //throw e;
+                catch (Exception e)
+                {
+                    // Just catching this for now so we can see the exception.
+                    Console.WriteLine("Exception e {0}", e.ToString());
+                    //throw e;
+                }
             }
             return responseText;
         }
