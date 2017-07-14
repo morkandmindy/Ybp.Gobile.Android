@@ -9,9 +9,10 @@
     android:minHeight="25px">
     <ImageView
         android:src="@android:drawable/ic_menu_gallery"
-        android:layout_width="624px"
-        android:layout_height="720px"
-        android:id="@+id/imageViewBookCover" />
+        android:layout_width="match_parent"
+        android:layout_height="1000px"
+        android:id="@+id/imageViewBookCover"
+        android:scaleType="fitStart" />
     <TextView
         android:text="Title"
         android:textAppearance="?android:attr/textAppearanceMedium"
