@@ -3,6 +3,7 @@
 using Android.App;
 using Android.OS;
 using Android.Widget;
+using Android.Views;
 
 using Newtonsoft.Json;
 
@@ -24,6 +25,7 @@ namespace Ybp.Gobile.Android.Resources.layout
         private TextView textViewTitle;
         private TextView textViewAddToCartResult;
         private Button Button1;
+        private ProgressBar progressBar;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -40,8 +42,11 @@ namespace Ybp.Gobile.Android.Resources.layout
             //listViewPurchaseOptions = FindViewById<ListView>(Resource.Id.listViewPurchaseOptions);
             Button1 = FindViewById<Button>(Resource.Id.button1);
             textViewAddToCartResult = FindViewById<TextView>(Resource.Id.textViewAddToCartResult);
+            progressBar = FindViewById<ProgressBar>(Resource.Id.progressBarAddCart);
 
             imageViewBookCover = FindViewById<ImageView>(Resource.Id.imageViewBookCover);
+
+            progressBar.Visibility = ViewStates.Invisible;
 
             SearchResult searchResult = JsonConvert.DeserializeObject<SearchResult>(Intent.GetStringExtra("response"));
 
@@ -72,13 +77,17 @@ namespace Ybp.Gobile.Android.Resources.layout
                                 ContainerId =
                                     searchResult.Container
                             };
+
             Button1.Click += async (sender, e) =>
                                    {
+                                       progressBar.Visibility = ViewStates.Visible;
                                        var response =
                                            await Utilities.MakeAjaxRequestAsync(
                                                Constants.BASE_URL + "app_putincart&cart=OrderCart",
                                                putInCart.ToRequest(),
                                                Constants.FORM_DATA);
+
+                                       progressBar.Visibility = ViewStates.Gone;
 
                                        try
                                        {
