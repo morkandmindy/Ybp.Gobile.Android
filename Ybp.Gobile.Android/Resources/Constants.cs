@@ -4,7 +4,7 @@ namespace Ybp.Gobile.Android
 {
     public static class Constants
     {
-        public static string BASE_URL = "http://172.27.11.172:8080/hx/ajax.ashx?location=";
+        public static string BASE_URL = "http://172.27.14.117:8080/hx/ajax.ashx?location=";
         public static string LOGIN_URL = BASE_URL + "login";
         public static string SEARCH_URL = BASE_URL + "isbn_search";
         public static CookieContainer CookieContainer = new CookieContainer();

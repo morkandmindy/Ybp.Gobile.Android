@@ -19,8 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="60px">
-      <EditText
-        android:id="@+id/isbnEditText"
+        <EditText
+            android:id="@+id/isbnEditText"
             android:layout_width="240.0dp"
             android:layout_height="wrap_content" />
         <Button

@@ -63,9 +63,18 @@ namespace Ybp.Gobile.Android
                                               var isbnRequest = JsonConvert.SerializeObject(isbn);
                                               var utils = new Utilities();
                                               var response = await Utilities.MakeAjaxRequestAsync(Constants.SEARCH_URL, isbnRequest, Constants.JSON_CONTENT);
-                                              var intent = new Intent(this, typeof(BibDisplayActivity));
-                                              intent.PutExtra("response", response);
-                                              StartActivity(intent);
+                                              if (response == "Status: Not found")
+                                              {
+                                                  Toast toast = Toast.MakeText(this, "Title not found.", ToastLength.Long);
+                                                  toast.Show();
+                                              }
+                                              else
+                                              {
+                                                  var intent = new Intent(this, typeof(BibDisplayActivity));
+                                                  intent.PutExtra("response", response);
+                                                  StartActivity(intent);
+                                              }
+                                              
                                           }
                                       };
             buttonSearch.Click += async (sender, e) =>

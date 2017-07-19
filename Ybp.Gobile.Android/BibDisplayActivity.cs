@@ -52,8 +52,8 @@ namespace Ybp.Gobile.Android.Resources.layout
             textViewPubYear.Text = "Pub Year: " + searchResult.BibData.PUBLICATION_YEAR;
             textViewBinding.Text = "Binding: " + searchResult.BibData.BINDING_TEXT;
             textViewPagination.Text = "Pagination: " + searchResult.BibData.PAGINATION;
-
-            var bookCover = Utilities.GetImageBitmapFromUrl(Constants.BOOK_COVER_VIEW_URL + searchResult.BibData.ISBN_13);
+            var targetUrl = Constants.BOOK_COVER_VIEW_URL + searchResult.BibData.ISBN_13;
+            var bookCover = Utilities.GetImageBitmapFromUrl(targetUrl);
             imageViewBookCover.SetImageBitmap(bookCover);
 
             //lets just pretend the user clicked on first item

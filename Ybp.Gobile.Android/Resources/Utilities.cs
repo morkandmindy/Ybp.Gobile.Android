@@ -27,11 +27,17 @@ namespace Ybp.Gobile.Android
                     request.Accept = "application/json";
                     request.Timeout = 2000;
 
-                    using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
+                    try
                     {
-                        streamWriter.Write(requestBody);
-                        streamWriter.Flush();
+                        using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
+                        {
+                            streamWriter.Write(requestBody);
+                            streamWriter.Flush();
+                        }
                     }
+                    catch (System.Net.WebException)
+                    {}
+                    
                     // Send the request to the server and wait for the response:
                     using (var response = (HttpWebResponse)(await request.GetResponseAsync()))
                     {
