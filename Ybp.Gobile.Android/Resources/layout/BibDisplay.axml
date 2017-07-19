@@ -13,7 +13,7 @@
     <ImageView
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="match_parent"
-        android:layout_height="1200px"
+        android:layout_height="950px"
         android:id="@+id/imageViewBookCover"
         android:scaleType="fitCenter"
         android:paddingTop="30px" />
